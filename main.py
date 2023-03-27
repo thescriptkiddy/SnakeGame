@@ -2,10 +2,9 @@ from turtle import Screen
 import time
 from snake import Snake
 from food import Food
-from scoreboard import Score
+from scoreboard import Scoreboard
 
-# Day 20
-# Todo Create snake body
+
 screen = Screen()
 screen.setup(width=600, height=600)
 screen.bgcolor("black")
@@ -13,7 +12,7 @@ screen.title("SnakeGame")
 screen.tracer(0)
 
 snake = Snake()
-scoreboard = Score()
+scoreboard = Scoreboard()
 food = Food()
 screen.listen()
 screen.onkey(snake.up, "Up")
@@ -30,17 +29,17 @@ while game_is_on:
 
     snake.move_snake()
 
-    # Todo Detect collision with food
     if snake.head.distance(food) < 15:
         food.refresh()
+        snake.extend()
+        scoreboard.increase_score()
 
+    if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
+        game_is_on = False
+        scoreboard.game_over()
 
-# Todo Create a score board
-
-# Todo Detect collision with wall
 
 # Todo Detect collision with tail
-
 
 
 screen.exitonclick()
