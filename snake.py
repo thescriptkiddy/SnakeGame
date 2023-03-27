@@ -33,19 +33,15 @@ class Snake:
     def up(self):
         if self.head.heading() != DOWN:
             self.head.setheading(UP)
-            self.head.forwoard(10)
 
     def down(self):
         if self.head.heading() != UP:
             self.head.setheading(DOWN)
-            self.head.forwoard(10)
 
     def left(self):
         if self.head.heading() != RIGHT:
             self.head.setheading(LEFT)
-            self.head.forwoard(10)
 
     def right(self):
         if self.head.heading() != LEFT:
             self.head.setheading(RIGHT)
-            self.head.forwoard(20)
