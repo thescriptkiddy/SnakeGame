@@ -7,7 +7,7 @@ from scoreboard import Scoreboard
 
 screen = Screen()
 screen.setup(width=600, height=600)
-screen.bgcolor("black")
+screen.bgcolor("grey")
 screen.title("SnakeGame")
 screen.tracer(0)
 
@@ -39,7 +39,11 @@ while game_is_on:
         scoreboard.game_over()
 
 
-# Todo Detect collision with tail
 
+
+    for segment in snake.segments[1:]:
+        if snake.head.distance(segment) < 10:
+            game_is_on = False
+            scoreboard.game_over()
 
 screen.exitonclick()

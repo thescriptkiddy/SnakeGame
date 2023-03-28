@@ -1,6 +1,7 @@
+import turtle
 from turtle import Turtle
 
-ALIGNMENT = "center"
+ALIGNMENT = "left"
 FONT = ("Arial", 20, 'normal')
 
 
@@ -13,9 +14,11 @@ class Scoreboard(Turtle):
         self.goto(y=270, x=0)
         self.hideturtle()
         self.num_food = 0
+        self.player = turtle.textinput("NAME", "Name of the player: ")
         self.update_scoreboard()
 
     def update_scoreboard(self):
+        self.write(self.player, align="right", font=("Arial", 20, "normal"))
         self.write(self.num_food, align=ALIGNMENT, font=FONT)
 
     def game_over(self):
